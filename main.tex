@@ -1,0 +1,77 @@
+\documentclass[a4paper, twoside, openany]{book}
+\usepackage[fontset=windows, heading=true, zihao=-4]{ctex} % 提供中文支持，使用中易字体（宋体、楷体、黑体、仿宋）、包含页眉、基础字号为小四
+\ctexset{
+chapter/number = \arabic{chapter}, % 设置章节标题序号为阿拉伯数字
+section/format += \Large\bfseries\raggedright, % 设置节标题样式
+}
+\usepackage[utf8]{inputenc} % 设置文档使用 UTF-8 编码方案编码
+\usepackage[T1]{fontenc} % 设置字体编码
+\usepackage[colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=black]{hyperref} % 提供超链接功能，并设置链接颜色为黑色
+\usepackage[style=apa, backend=biber]{biblatex} % 提供参考文献处理功能，引用格式为 APA 格式，后端引擎设为 biber（可以支持非英文字符）
+\addbibresource{Chapters/xbib.bib} % 参考文献数据库
+\usepackage[toc, page, title, titletoc, header]{appendix} % 提供与附录标题相关的一些功能，添加“附录”字样，添加到目录
+\usepackage{makeidx} % 提供建立索引功能
+\makeindex % 建立索引
+\usepackage[totoc]{idxlayout} % 提供与索引有关的功能，添加索引到目录
+\usepackage[top=2.54cm,bottom=2.54cm,left=3.17cm,right=3.17cm]{geometry} % 提供页边距设置功能，设置上下页边距为 2.54 cm，左右页边距为 3.17 cm
+\usepackage{fancyhdr} % 提供设置页眉页脚功能
+\pagestyle{fancy}
+\fancyhead{} % 清空页眉
+\fancyfoot{} % 清空页脚
+\fancyhead[CE,CO]{华东师范大学博士学位论文} % 设置奇数页和偶数页均居中输出“华东师范大学博士学位论文”
+\fancyfoot[LE,RO]{\thepage} % 设置奇数页居左、偶数页居右输出页码
+\newcommand{\notefig}[2][1]{\parbox{#1\linewidth}{\flushleft \footnotesize \textit{注：}#2}} % 自定义 \notefig 命令用于输出图注
+\newcommand{\notetable}[2][1]{\parbox{#1\linewidth}{\flushleft \footnotesize \textit{注：}#2}} % 自定义 \notetable 命令用于输出表注
+
+
+\usepackage{amsmath} % 提供与数学公式相关的功能
+\usepackage{amsfonts} % 提供数学相关字体
+\usepackage{mathptmx} % 使用 Times Roman 字体
+\usepackage{gensymb} % 提供常用符号支持，例如摄氏度符号，千分号等
+\usepackage{graphicx} % 提供与图像有关的增强功能
+\usepackage{booktabs} % 提供三线表中上下边界加粗的横线
+\usepackage{caption} % 提供图表标题与交叉引用的位置矫正功能
+\usepackage[flushleft]{threeparttable} % 提供表注环境
+\usepackage{rotating} % 提供整页图表功能
+\usepackage{siunitx} % 提供与单位相关的一些功能
+\usepackage{tikz} % 提供强大的绘图功能
+\usetikzlibrary{positioning} % 使用 TikZ 提供的方位功能
+\tikzset{mynode/.style={draw, text width=1in, align=center}} % 定义 mynode 样式（含有文字的方框）
+\usepackage{tabularray} % 提供 tblr 表格环境
+
+
+
+
+\begin{document}
+
+\frontmatter
+\pagenumbering{alph} % 使用字母页码
+\pdfbookmark{标题页}{} % 添加标题页书签
+\input{Chapters/Pages/page01_标题页}
+\input{Chapters/Pages/page02_原创声明和版权声明}
+\input{Chapters/Pages/page03_答辩决议、同意答辩确认声明、导师意见表}
+\input{Chapters/Pages/page04_小组成员专家签名单}
+\pagenumbering{roman} % 使用小写罗马数字页码
+\input{Chapters/Pages/page05_摘要}
+\pdfbookmark{\contentsname}{toc} % 添加目录页书签
+\tableofcontents % 输出目录
+
+\mainmatter
+\include{Chapters/chapter01_绪论}
+\include{Chapters/chapter02_问题提出}
+\include{Chapters/chapter03_研究一}
+\include{Chapters/chapter04_研究二}
+\include{Chapters/chapter05_总讨论}
+\include{Chapters/chapter06_结论}
+\nocite{*} % 输出参考文献数据库中所有文献
+\printbibliography[title={参考文献}] % 参考文献标题
+\addcontentsline{toc}{chapter}{参考文献} % 添加参考文献到目录
+\appendix % 停止章节编码，使用附录编码
+\include{Chapters/Appendix_附录}
+
+\backmatter
+\include{Chapters/Pages/Pages_简介和成果}
+\include{Chapters/Pages/Pages_后记}
+% \printindex
+
+\end{document}

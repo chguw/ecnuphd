@@ -1,0 +1,24 @@
+\chapter{附录}
+
+\section{使用说明}
+
+本模板主要面向心院的同学，不需要超出普通使用 \LaTeX 的知识，适合初学者和喜欢 DIY 的同学。模板包含了学校对学位论文所要求的全部结构，但是在一些细节上并没有完全遵照规定（见第 \pageref{后记} 页）。模板中 \texttt{main.tex} 是主要框架文件，其他都是辅助文件，编译时只需要编译主要框架文件即可。
+
+\section{编译步骤}
+
+本模板使用 XeLaTeX 引擎编译。正常情况下您只需要在文件所在目录执行 \verb`xelatex main.tex` 命令即可输出文档。如果您使用的是 MiKTex 发行版，那么您可以在 TeXworks 编辑器里选择排版引擎后点击 \includegraphics{Pictures/Appendix/pic_xelatx.png} 按钮。
+
+如果您更新了参考文献，那么需要按照以下步骤编译：
+
+\begin{enumerate}
+    \item 使用 XeLaTeX 引擎编译 \includegraphics{Pictures/Appendix/pic_xelatx.png}
+    \item 使用 Biber 引擎编译 \includegraphics{Pictures/Appendix/pic_biber.png}
+    \item 使用 XeLaTeX 引擎重新编译 \includegraphics{Pictures/Appendix/pic_xelatx.png}
+    \item 再次使用 XeLaTeX 引擎编译 \includegraphics{Pictures/Appendix/pic_xelatx.png}
+\end{enumerate}
+
+第一步是为了生成辅助文件，第二步依据参考文献数据库 \texttt{xbib.bib} 更新 \texttt{.bbl} 文件，第三步排版文档，第四步更新文档的交叉引用。
+
+如果您更新了索引，那么您需要在第二步把 Biber 引擎换为 MakeIndex 引擎 \includegraphics{Pictures/Appendix/pic_makeindex.png}，更新 \texttt{.idx} 文件。
+
+对于不需要频繁更新参考文献的文档，TeXworks 提供了一个快捷的排版引擎组合 \includegraphics{Pictures/Appendix/pic_xelate_makeindex.png}，可以一键输出包含索引的文档。
